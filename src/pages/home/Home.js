@@ -1,18 +1,20 @@
-import React, {Component} from 'react'
+// @flow
+import * as React from 'react'
 
-class Home extends Component {
-    constructor () {
-        
-    }
+const {Component} = React
 
-    render () {
-        if(true){}
-        return (
-            <div >
-                
-            </div>
-        )
-    }
+type Props = {
+  packageName: string,
+  startDate: string,
+  endDate?: string
 }
 
-export default Home
+export default class Home extends Component<Props> {
+  render() {
+    return (
+      <div>
+        ddd
+      </div>
+    )
+  }
+}
