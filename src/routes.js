@@ -12,5 +12,5 @@ function AppRouter(params) {
     </Router>
   )
 }
-        
+
 export default AppRouter

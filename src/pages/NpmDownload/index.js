@@ -1,1 +1,1 @@
-export {default} from './NpmDownload'
+export { default } from './NpmDownload'

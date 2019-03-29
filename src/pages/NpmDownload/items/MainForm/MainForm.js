@@ -18,16 +18,22 @@ type State = {
   endDate: string
 }
 
-export default class MainForm extends Component<Props, State>{
+export default class MainForm extends Component<Props, State> {
   static defaultProps = {
     packageName: 'react,vue',
-    startDate: moment.utc().add(-30, 'd').format(dateFormat),
-    endDate: moment.utc().add(-1, 'd').format(dateFormat)
+    startDate: moment
+      .utc()
+      .add(-30, 'd')
+      .format(dateFormat),
+    endDate: moment
+      .utc()
+      .add(-1, 'd')
+      .format(dateFormat)
   }
 
   constructor(props: Props) {
     super(props)
-  
+
     console.log(this.props)
     this.state = Object.assign({}, this.props)
   }
@@ -37,13 +43,12 @@ export default class MainForm extends Component<Props, State>{
       [name]: event.target.value
     })
   }
-  
+
   render() {
     const { packageName } = this.state
     return (
       <div>
-         <TextField
-          id="outlined-name"
+        <TextField
           label="Package"
           value={packageName}
           onChange={this.handleChangePackage('packageName')}

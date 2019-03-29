@@ -1,1 +1,1 @@
-export {default} from './MainForm'
+export { default } from './MainForm'
