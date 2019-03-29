@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 import MainForm from './items/MainForm'
 
-export default class NpmDownload extends Component{
+export default class NpmDownload extends Component<{}>{
   
   render() {
     const params = new URLSearchParams(window.location.search)
