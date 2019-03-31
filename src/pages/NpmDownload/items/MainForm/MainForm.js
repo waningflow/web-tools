@@ -1,27 +1,35 @@
 // @flow
 import * as React from 'react'
-import TextField from '@material-ui/core/TextField'
+// import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
-import moment from 'moment'
 import MomentUtils from '@date-io/moment'
 import './MainForm.css'
-
-import {
-  InlineDatePicker,
-  MuiPickersUtilsProvider
-} from 'material-ui-pickers'
-
-const { Component } = React
-const dateFormat = 'YYYY-MM-DD'
+// import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import InputBase from '@material-ui/core/InputBase'
+import SearchIcon from '@material-ui/icons/Search'
+import IconButton from '@material-ui/core/IconButton'
+import { InlineDatePicker, MuiPickersUtilsProvider } from 'material-ui-pickers'
 
 const styles = theme => ({
-  container: {
+  root: {
+    padding: '2px 4px',
     display: 'flex',
-    flexWrap: 'wrap'
+    alignItems: 'center',
+    width: '100%',
+    marginTop: '20px'
   },
   textField: {
+    width: '120px',
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit
+  },
+  input: {
+    marginLeft: 8,
+    flex: 1,
+  },
+  iconButton: {
+    padding: 10
   }
 })
 
@@ -38,19 +46,7 @@ type State = {
   endDate: string
 }
 
-class MainForm extends Component<Props, State> {
-  static defaultProps = {
-    packageName: 'react,vue',
-    startDate: moment
-      .utc()
-      .add(-30, 'd')
-      .format(dateFormat),
-    endDate: moment
-      .utc()
-      .add(-1, 'd')
-      .format(dateFormat)
-  }
-
+class MainForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
@@ -75,23 +71,11 @@ class MainForm extends Component<Props, State> {
     const { classes } = this.props
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
-        <div>
-          <TextField
-            label="Package"
-            value={packageName}
-            onChange={this.handleChangeInput('packageName')}
-            margin="normal"
-            variant="outlined"
-            fullWidth={true}
-          />
-        </div>
-        <div>
+        <div className="dateRangeContainer">
           <InlineDatePicker
             className={classes.textField}
-            keyboard
             clearable
-            variant="outlined"
-            label="Start Date"
+            label="Start"
             value={startDate}
             margin="normal"
             onChange={this.handleChangeDate('startDate')}
@@ -100,16 +84,27 @@ class MainForm extends Component<Props, State> {
           />
           <InlineDatePicker
             className={classes.textField}
-            keyboard
             clearable
-            variant="outlined"
-            label="End Date"
+            label="End"
             value={endDate}
             margin="normal"
             onChange={this.handleChangeDate('endDate')}
             format={'MM/DD/YYYY'}
             mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
           />
+        </div>
+        <div>
+          <Paper className={classes.root} elevation={1}>
+            <InputBase
+              className={classes.input}
+              value={packageName}
+              onChange={this.handleChangeInput('packageName')}
+              placeholder="Package"
+            />
+            <IconButton className={classes.iconButton} aria-label="Search">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
         </div>
       </MuiPickersUtilsProvider>
     )
