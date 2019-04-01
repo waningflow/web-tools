@@ -1,11 +1,15 @@
 // @flow
-import Paper from '@material-ui/core/Paper'
 import * as React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import _ from 'lodash'
 import './MainChart.css'
 import { fetchNpmDownload } from '../../data/api'
 import { formatDownloadData } from '../../data/parse'
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 
 type Props = {
   packageName: string,
@@ -15,8 +19,11 @@ type Props = {
 }
 
 type State = {
-  initData: Object
+  initData: Object,
+  breakdown: string
 }
+
+const breakdownList = ['day', 'week', 'month', 'year']
 
 export default class MainChart extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -25,7 +32,8 @@ export default class MainChart extends React.Component<Props, State> {
     this.updateData()
 
     this.state = {
-      initData: []
+      initData: [],
+      breakdown: 'day'
     }
   }
 
@@ -34,7 +42,11 @@ export default class MainChart extends React.Component<Props, State> {
     let packages = packageName.split(',')
     let allData = []
     let proList = packages.map(async (v: string) => {
-      let res = await fetchNpmDownload({ packageName: v, startDate, endDate })
+      let res = await fetchNpmDownload({
+        packageName: _.trim(v),
+        startDate,
+        endDate
+      })
       allData = allData.concat(res)
     })
     try {
@@ -57,6 +69,9 @@ export default class MainChart extends React.Component<Props, State> {
         chart: {
           type: 'spline',
           height: 600
+        },
+        credits: {
+          enabled: false
         }
       }
     }
@@ -78,6 +93,9 @@ export default class MainChart extends React.Component<Props, State> {
       chart: {
         type: 'spline',
         height: 600
+      },
+      credits: {
+        enabled: false
       },
       xAxis: {
         categories: dateList,
@@ -101,14 +119,36 @@ export default class MainChart extends React.Component<Props, State> {
     return chartOption
   }
 
+  handleChangeBreakdown = (e: SyntheticEvent<>, value: string) => {
+    this.setState({
+      breakdown: value
+    })
+  }
+
   render() {
-    const { initData } = this.state
-    const allData = formatDownloadData(initData)
+    const { initData, breakdown } = this.state
+    const allData = formatDownloadData(initData, breakdown)
     const chartOption = this.parseChartOption(allData)
     return (
-      <Paper className="chartContainer">
-        <HighchartsReact highcharts={Highcharts} options={chartOption} />
-      </Paper>
+      <div>
+        <div className="buttonGroupContainer">
+          <ToggleButtonGroup
+            className="buttonGroup"
+            value={breakdown}
+            exclusive={true}
+            onChange={this.handleChangeBreakdown.bind(this)}
+          >
+            {breakdownList.map(bv => (
+              <ToggleButton value={bv} key={bv}>
+                {bv}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </div>
+        <Paper className="chartContainer">
+          <HighchartsReact highcharts={Highcharts} options={chartOption} />
+        </Paper>
+      </div>
     )
   }
 }

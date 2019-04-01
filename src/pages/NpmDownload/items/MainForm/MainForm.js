@@ -118,6 +118,7 @@ class MainForm extends React.Component<Props, State> {
             <IconButton
               className={classes.iconButton}
               aria-label="Search"
+              color="primary"
               onClick={this.handleSearch.bind(this)}
             >
               <SearchIcon />
