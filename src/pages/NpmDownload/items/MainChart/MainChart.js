@@ -60,8 +60,8 @@ export default class MainChart extends React.Component<Props, State> {
         }
       }
     }
-    let date_list = data[0].downloads.map(v => v.day)
-    let series = data.map(
+    let dateList = data[0].downloads.map(v => v.day)
+    let series = data.map<Array<Object>>(
       (v: Object): Object => {
         return {
           name: v.package,
@@ -82,7 +82,7 @@ export default class MainChart extends React.Component<Props, State> {
         height: 600
       },
       xAxis: {
-        categories: date_list,
+        categories: dateList,
         crosshair: true
       },
       yAxis: {
@@ -107,16 +107,6 @@ export default class MainChart extends React.Component<Props, State> {
     const { initData } = this.state
     const allData = formatDownloadData(initData)
     const chartOption = this.parseChartOption(allData)
-    // const chartOption = {
-    //   title: {
-    //     text: 'Download Statistic'
-    //   },
-    //   series: [
-    //     {
-    //       data: [1, 2, 3]
-    //     }
-    //   ]
-    // }
     return (
       <Paper className="chartContainer">
         <HighchartsReact highcharts={Highcharts} options={chartOption} />
