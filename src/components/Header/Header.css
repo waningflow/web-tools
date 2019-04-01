@@ -1,0 +1,24 @@
+.headerMenuBoard{
+  padding: 20px;
+}
+.headerMenuItem{
+  margin-bottom: 10px;
+}
+.headerLogoImage{
+  background-color: #247BA0;
+  background-image: url('../../assets/logo_wh.png');
+  width: 160px;
+  height: 40px;
+  background-size: 100% 100%;
+  border-radius: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.githubLogoImage{
+  background-image: url('../../assets/GitHub-Mark-120px-plus.png');
+  width: 30px;
+  height: 30px;
+  background-size: 100% 100%;
+  margin-right: 20px;
+  cursor: pointer;
+}

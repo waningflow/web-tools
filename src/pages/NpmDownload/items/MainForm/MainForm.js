@@ -62,7 +62,7 @@ class MainForm extends React.Component<Props, State> {
 
   handleChangeDate = (name: string) => (value: string) => {
     this.setState({
-      [name]: moment.utc(value).format('YYYY-MM-DD')
+      [name]: moment(value).format('YYYY-MM-DD')
     })
   }
 

@@ -7,6 +7,7 @@ import Header from './components/Header'
 const theme = createMuiTheme({
   palette: {
     primary: {
+      light: 'rgba(36, 123, 160, 0.1)',
       main: 'rgba(36, 123, 160, 1)',
       contrastText: '#fff'
     },
