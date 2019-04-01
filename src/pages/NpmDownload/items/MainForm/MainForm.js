@@ -2,6 +2,7 @@
 import * as React from 'react'
 // import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
+import moment from 'moment'
 import MomentUtils from '@date-io/moment'
 import './MainForm.css'
 // import Button from '@material-ui/core/Button'
@@ -26,7 +27,7 @@ const styles = theme => ({
   },
   input: {
     marginLeft: 8,
-    flex: 1,
+    flex: 1
   },
   iconButton: {
     padding: 10
@@ -62,8 +63,20 @@ class MainForm extends React.Component<Props, State> {
 
   handleChangeDate = (name: string) => (value: string) => {
     this.setState({
-      [name]: value
+      [name]: moment.utc(value).format('YYYY-MM-DD')
     })
+  }
+
+  handleSearch() {
+    const { packageName, startDate, endDate } = this.state
+    console.log(startDate)
+    window.location.href = `?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`
+  }
+
+  handleKeyUp = (event: SyntheticKeyboardEvent<>) => {
+    if(event.keyCode === 13){
+      this.handleSearch()
+    }
   }
 
   render() {
@@ -99,9 +112,14 @@ class MainForm extends React.Component<Props, State> {
               className={classes.input}
               value={packageName}
               onChange={this.handleChangeInput('packageName')}
+              onKeyUp={this.handleKeyUp.bind(this)}
               placeholder="Package"
             />
-            <IconButton className={classes.iconButton} aria-label="Search">
+            <IconButton
+              className={classes.iconButton}
+              aria-label="Search"
+              onClick={this.handleSearch.bind(this)}
+            >
               <SearchIcon />
             </IconButton>
           </Paper>
