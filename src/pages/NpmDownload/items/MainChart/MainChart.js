@@ -61,18 +61,16 @@ export default class MainChart extends React.Component<Props, State> {
       }
     }
     let dateList = data[0].downloads.map(v => v.day)
-    let series = data.map<Array<Object>>(
-      (v: Object): Object => {
-        return {
-          name: v.package,
-          data: v.downloads.map((dv: Object): string => dv.downloads),
-          lineWidth: 1,
-          marker: {
-            radius: 2
-          }
+    let series: Array<Object> = data.map(v => {
+      return {
+        name: v.package,
+        data: v.downloads.map(dv => dv.downloads),
+        lineWidth: 1,
+        marker: {
+          radius: 2
         }
       }
-    )
+    })
     let chartOption = {
       title: {
         text: ''
