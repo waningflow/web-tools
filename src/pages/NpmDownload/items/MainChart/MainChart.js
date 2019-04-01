@@ -6,7 +6,7 @@ import _ from 'lodash'
 import './MainChart.css'
 import { fetchNpmDownload } from '../../data/api'
 import { formatDownloadData } from '../../data/parse'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
@@ -60,7 +60,6 @@ export default class MainChart extends React.Component<Props, State> {
   }
 
   parseChartOption(data: Array<Object>) {
-    console.log(data)
     if (data.length === 0) {
       return {
         title: {

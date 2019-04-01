@@ -51,7 +51,6 @@ class MainForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    console.log(this.props)
     this.state = Object.assign({}, this.props)
   }
 
@@ -69,7 +68,6 @@ class MainForm extends React.Component<Props, State> {
 
   handleSearch() {
     const { packageName, startDate, endDate } = this.state
-    console.log(startDate)
     window.location.href = `?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`
   }
 

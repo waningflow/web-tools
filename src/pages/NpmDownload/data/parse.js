@@ -18,7 +18,6 @@ export function formatDownloadData(
       return dv
     })
     d = _.groupBy(d, 'group')
-    console.log(d)
     let downloads = Object.entries(d).map(([group, groupData]) => {
       return {
         day: group,
@@ -28,6 +27,5 @@ export function formatDownloadData(
     v.downloads = downloads
     return v
   })
-  console.log(result)
   return result
 }
