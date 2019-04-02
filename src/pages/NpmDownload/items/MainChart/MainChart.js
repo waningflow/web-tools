@@ -10,6 +10,7 @@ import { formatDownloadData } from '../../data/parse'
 import Paper from '@material-ui/core/Paper'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
+import Immutable from 'seamless-immutable'
 
 type Props = {
   packageName: string,
@@ -33,9 +34,20 @@ export default class MainChart extends React.Component<Props, State> {
     this.updateData()
 
     this.state = {
-      initData: [],
+      initData: Immutable([]),
       breakdown: 'day'
     }
+  }
+
+  shouldComponentUpdate(prevProps: Props, preState: State) {
+    if (
+      this.props.update === prevProps.update &&
+      this.state.initData === preState.initData &&
+      this.state.breakdown === preState.breakdown
+    ) {
+      return false
+    }
+    return true
   }
 
   componentDidUpdate(prevProps: Object) {
@@ -59,7 +71,7 @@ export default class MainChart extends React.Component<Props, State> {
     try {
       await Promise.all(proList)
       this.setState({
-        initData: allData
+        initData: Immutable(allData)
       })
     } catch (error) {
       throw error
