@@ -11,6 +11,7 @@ import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
 import IconButton from '@material-ui/core/IconButton'
 import { InlineDatePicker, MuiPickersUtilsProvider } from 'material-ui-pickers'
+import { withRouter } from 'react-router'
 
 const styles = theme => ({
   root: {
@@ -38,7 +39,8 @@ type Props = {
   packageName: string,
   startDate: string,
   endDate: string,
-  classes: Object
+  classes: Object,
+  history: Object
 }
 
 type State = {
@@ -68,7 +70,8 @@ class MainForm extends React.Component<Props, State> {
 
   handleSearch() {
     const { packageName, startDate, endDate } = this.state
-    window.location.href = `?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`
+    const { history } = this.props
+    history.push(`?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`)
   }
 
   handleKeyUp = (event: SyntheticKeyboardEvent<>) => {
@@ -128,4 +131,4 @@ class MainForm extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(MainForm)
+export default withStyles(styles)(withRouter(MainForm))

@@ -6,13 +6,14 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Popover from '@material-ui/core/Popover'
 import Paper from '@material-ui/core/Paper'
-import Link from '@material-ui/core/Link'
 import { withStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import './Header.css'
+import { withRouter } from 'react-router'
 
 type Props = {
-  classes: Object
+  classes: Object,
+  history: Object
 }
 type State = {
   anchorEl: Object
@@ -47,6 +48,8 @@ const styles = theme => ({
   }
 })
 
+const githubUrl = 'https://github.com/waningflow'
+
 class Header extends React.Component<Props, State> {
   state = {
     anchorEl: null
@@ -69,14 +72,14 @@ class Header extends React.Component<Props, State> {
     return (
       <Paper className="headerMenuBoard">
         {MenuConfig.map(menuItem => (
-          <Link href={menuItem.path} underline="none" key={menuItem.name}>
-            <div className={classes.headerMenuItem}>
+          // <Link href={menuItem.path} underline="none" key={menuItem.name}>
+            <div key={menuItem.name} className={classes.headerMenuItem} onClick={_ => this.handleLinkTo(menuItem.path)}>
               <Typography variant="subtitle1">{menuItem.title}</Typography>
               <Typography variant="subtitle2" style={{ color: '#aaa' }}>
                 {menuItem.desc}
               </Typography>
             </div>
-          </Link>
+          // </Link>
         ))}
       </Paper>
     )
@@ -88,7 +91,6 @@ class Header extends React.Component<Props, State> {
       <div>
         <Button color="primary" onClick={this.handleOpenMenu.bind(this)}>
           <MenuIcon />
-          Tools
         </Button>
         <Popover
           id="simple-popper"
@@ -110,6 +112,11 @@ class Header extends React.Component<Props, State> {
     )
   }
 
+  handleLinkTo(url) {
+    const { history } = this.props
+    history.push(url)
+  }
+
   render() {
     const { classes } = this.props
     return (
@@ -119,9 +126,9 @@ class Header extends React.Component<Props, State> {
             <div className="headerLogoImage" />
             {this.toolsButton()}
             <div className={classes.grow} />
-            <Link href="https://github.com/waningflow" underline="none">
+            <a href={githubUrl}>
               <div className="githubLogoImage" />
-            </Link>
+            </a>
           </Toolbar>
         </AppBar>
       </div>
@@ -129,4 +136,4 @@ class Header extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(Header)
+export default withStyles(styles)(withRouter(Header))

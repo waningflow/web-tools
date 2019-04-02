@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import AppRouter from './routes'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Header from './components/Header'
 
 const theme = createMuiTheme({
   palette: {
@@ -12,7 +11,8 @@ const theme = createMuiTheme({
       contrastText: '#fff'
     },
     secondary: {
-      main: 'rgba(112, 193, 179, 1)',
+      light: 'rgba(178, 219, 191, 0.3)',
+      main: 'rgba(178, 219, 191, 1)',
       contrastText: '#fff'
     }
   },
@@ -30,7 +30,6 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Header />
         <div className="App">
           <AppRouter />
         </div>

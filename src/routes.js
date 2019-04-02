@@ -5,10 +5,12 @@ import Home from './pages/Home'
 import NpmDownload from './pages/NpmDownload'
 import LogoGenerate from './pages/LogoGenerate'
 import './routes.css'
+import Header from './components/Header'
 
 function AppRouter(params) {
   return (
     <Router>
+      <Header />
       <div className="routeContainer">
         <Grid container spacing={24} justify={'center'}>
           <Grid item xs={12} md={10} xl={8}>

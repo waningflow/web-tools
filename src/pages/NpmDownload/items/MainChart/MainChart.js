@@ -37,6 +37,16 @@ export default class MainChart extends React.Component<Props, State> {
     }
   }
 
+  componentDidUpdate(prevProps: Object) {
+    if (
+      this.props.packageName !== prevProps.packageName ||
+      this.props.startDate !== prevProps.startDate ||
+      this.props.endDate !== prevProps.endDate
+    ) {
+      this.updateData()
+    }
+  }
+
   async updateData() {
     const { packageName, startDate, endDate } = this.props
     let packages = packageName.split(',')
