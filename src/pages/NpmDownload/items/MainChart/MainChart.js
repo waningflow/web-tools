@@ -61,12 +61,14 @@ export default class MainChart extends React.Component<Props, State> {
     let packages = packageName.split(',')
     let allData = []
     let proList = packages.map(async (v: string) => {
-      let res = await fetchNpmDownload({
-        packageName: _.trim(v),
-        startDate,
-        endDate
-      })
-      allData = allData.concat(res)
+      try {
+        let res = await fetchNpmDownload({
+          packageName: _.trim(v),
+          startDate,
+          endDate
+        })
+        allData = allData.concat(res)
+      } catch (e) {}
     })
     try {
       await Promise.all(proList)
