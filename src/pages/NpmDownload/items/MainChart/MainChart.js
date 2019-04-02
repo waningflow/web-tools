@@ -15,6 +15,7 @@ type Props = {
   packageName: string,
   startDate: string,
   endDate: string,
+  update: Boolean,
   classes: Object
 }
 
@@ -38,11 +39,7 @@ export default class MainChart extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Object) {
-    if (
-      this.props.packageName !== prevProps.packageName ||
-      this.props.startDate !== prevProps.startDate ||
-      this.props.endDate !== prevProps.endDate
-    ) {
+    if (this.props.update !== prevProps.update) {
       this.updateData()
     }
   }

@@ -40,49 +40,51 @@ type Props = {
   startDate: string,
   endDate: string,
   classes: Object,
-  history: Object
+  history: Object,
+  onChange: Function,
+  onSubmit: Function
 }
 
-type State = {
-  packageName: string,
-  startDate: string,
-  endDate: string
-}
-
-class MainForm extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-
-    this.state = Object.assign({}, this.props)
-  }
+class MainForm extends React.Component<Props> {
 
   handleChangeInput = (name: string) => (event: SyntheticInputEvent<>) => {
-    this.setState({
-      [name]: event.target.value
-    })
+    this.handleChangeForm({ [name]: event.target.value })
   }
 
   handleChangeDate = (name: string) => (value: string) => {
-    this.setState({
-      [name]: moment(value).format('YYYY-MM-DD')
-    })
+    this.handleChangeForm({ [name]: moment(value).format('YYYY-MM-DD') })
+  }
+
+  handleChangeForm(obj) {
+    const { packageName, startDate, endDate, onChange } = this.props
+    onChange(
+      Object.assign(
+        {
+          packageName,
+          startDate,
+          endDate
+        },
+        obj
+      )
+    )
   }
 
   handleSearch() {
-    const { packageName, startDate, endDate } = this.state
-    const { history } = this.props
-    history.push(`?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`)
+    const { packageName, startDate, endDate, history , onSubmit} = this.props
+    history.push(
+      `?packageName=${packageName}&startDate=${startDate}&endDate=${endDate}`
+    )
+    onSubmit()
   }
 
   handleKeyUp = (event: SyntheticKeyboardEvent<>) => {
-    if(event.keyCode === 13){
+    if (event.keyCode === 13) {
       this.handleSearch()
     }
   }
 
   render() {
-    const { packageName, startDate, endDate } = this.state
-    const { classes } = this.props
+    const { packageName, startDate, endDate, classes } = this.props
     return (
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <div className="dateRangeContainer">
