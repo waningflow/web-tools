@@ -11,6 +11,7 @@
   height: 40px;
   background-size: 100% 100%;
   border-radius: 5px;
+  margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
 }

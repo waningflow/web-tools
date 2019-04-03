@@ -3,7 +3,7 @@ import * as React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import Popover from '@material-ui/core/Popover'
 import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles'
@@ -134,8 +134,8 @@ class Header extends React.Component<Props, State> {
       <div>
         <AppBar position="static" color="default">
           <Toolbar>
-            <div className="headerLogoImage" />
             {this.toolsButton()}
+            <div className="headerLogoImage" />
             <div className={classes.grow} />
             <a href={githubUrl}>
               {/* <div className="githubLogoImage" /> */}

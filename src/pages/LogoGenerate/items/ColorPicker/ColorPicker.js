@@ -4,12 +4,12 @@ import { SketchPicker } from 'react-color'
 import './ColorPicker.css'
 
 type Props = {
-  color: Object
+  color: Object,
+  onChange: Function
 }
 
 type State = {
-  open: boolean,
-  color: Object
+  open: boolean
 }
 
 class ColorPicker extends Component<Props, State> {
@@ -17,13 +17,13 @@ class ColorPicker extends Component<Props, State> {
     super(props)
 
     this.state = {
-      open: false,
-      color: Object.assign({}, this.props.color)
+      open: false
     }
   }
 
   handleChangeColor = (color: Object) => {
-    this.setState({ color: color.rgb })
+    const { onChange } = this.props
+    onChange(color.rgb)
   }
 
   handleClickOpen = () => {
@@ -39,7 +39,8 @@ class ColorPicker extends Component<Props, State> {
   }
 
   render() {
-    const { color, open } = this.state
+    const { open } = this.state
+    const { color } = this.props
     return (
       <div>
         <div
