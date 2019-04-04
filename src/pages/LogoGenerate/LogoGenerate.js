@@ -6,6 +6,9 @@ import ColorPicker from './items/ColorPicker'
 import Typography from '@material-ui/core/Typography'
 import GridBox from './items/GridBox'
 import FontPicker from 'font-picker-react'
+import domtoimage from 'dom-to-image'
+import Button from '@material-ui/core/Button'
+import { createAndDownloadFile } from '../../utils'
 
 type Props = {
   classes: Object
@@ -18,7 +21,7 @@ type State = {
   lastTextColor: Object,
   highlightText: string,
   fontSize: number,
-  fontFamily: string,
+  fontFamily: string
   // firstText: string,
   // lastText: string
 }
@@ -109,8 +112,8 @@ const ColorNameList = [
   }
 ]
 
-const firstText = 'You'
-const lastText = 'Tube'
+const firstText = 'Edit'
+const lastText = 'Me'
 
 class LogoGenerate extends Component<Props, State> {
   constructor(props: Props) {
@@ -123,13 +126,22 @@ class LogoGenerate extends Component<Props, State> {
       lastTextColor: { r: 255, g: 0, b: 0, a: 1 },
       highlightText: 'last',
       fontSize: 60,
-      fontFamily: 'Oswald', // or Fira Sans Condensed
+      fontFamily: 'Oswald' // or Fira Sans Condensed
     }
+
+    this.logoRef = React.createRef()
   }
 
   handleChangeColor = (name: string) => (color: Object) => {
     this.setState({
       [name]: color
+    })
+  }
+
+  handleClickExport() {
+    domtoimage.toBlob(this.logoRef.current).then(function(blob) {
+      // window.saveAs(blob, 'my-node.png')
+      createAndDownloadFile('my_node.png', blob)
     })
   }
 
@@ -158,6 +170,7 @@ class LogoGenerate extends Component<Props, State> {
                 style={{
                   backgroundColor: parseColor(logoBackgroundColor)
                 }}
+                ref={this.logoRef}
               >
                 <div
                   className={classes.logoGenerateText}
@@ -181,7 +194,7 @@ class LogoGenerate extends Component<Props, State> {
                   contentEditable={true}
                   spellCheck={false}
                 >
-                  {lastText}
+                  <span>{lastText}</span>
                 </div>
               </div>
             </div>
@@ -224,6 +237,16 @@ class LogoGenerate extends Component<Props, State> {
               </div>
             </div>
           </div>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.handleClickExport.bind(this)}
+            style={{
+              marginTop: '20px'
+            }}
+          >
+            Export
+          </Button>
         </Grid>
       </Grid>
     )
