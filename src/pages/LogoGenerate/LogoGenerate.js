@@ -9,6 +9,7 @@ import FontPicker from 'font-picker-react'
 import domtoimage from 'dom-to-image'
 import Button from '@material-ui/core/Button'
 import { createAndDownloadFile } from '../../utils'
+import Slider from '@material-ui/lab/Slider'
 
 type Props = {
   classes: Object
@@ -21,7 +22,8 @@ type State = {
   lastTextColor: Object,
   highlightText: string,
   fontSize: number,
-  fontFamily: string
+  fontFamily: string,
+  direction: string
   // firstText: string,
   // lastText: string
 }
@@ -30,7 +32,7 @@ const api_key = 'AIzaSyD5hekAz930QwvNrQe6orJBFL0TO5iH0_k'
 
 const styles = theme => ({
   logoGenerateHandBar: {
-    padding: '20px 5px',
+    padding: '20px 15px',
     borderRadius: '5px',
     border: '2px dashed',
     borderColor: theme.palette.secondary.main
@@ -80,7 +82,7 @@ const styles = theme => ({
     borderColor: theme.palette.secondary.main,
     fontSize: '60px',
     display: 'flex',
-    flexDirection: 'row',
+    // flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     letterSpacing: '1px'
@@ -126,7 +128,8 @@ class LogoGenerate extends Component<Props, State> {
       lastTextColor: { r: 255, g: 0, b: 0, a: 1 },
       highlightText: 'last',
       fontSize: 60,
-      fontFamily: 'Oswald' // or Fira Sans Condensed
+      fontFamily: 'Ubuntu', // or Fira Sans Condensed or Oswald
+      direction: 'row'
     }
 
     this.logoRef = React.createRef()
@@ -145,6 +148,12 @@ class LogoGenerate extends Component<Props, State> {
     })
   }
 
+  handleChangeFontSize(event, value) {
+    this.setState({
+      fontSize: value
+    })
+  }
+
   render() {
     const { classes } = this.props
     const {
@@ -152,7 +161,9 @@ class LogoGenerate extends Component<Props, State> {
       logoBackgroundColor,
       highlightBackgroundColor,
       firstTextColor,
-      lastTextColor
+      lastTextColor,
+      fontSize,
+      direction
     } = this.state
     const parseColor = color =>
       `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`
@@ -168,7 +179,9 @@ class LogoGenerate extends Component<Props, State> {
                   'apply-font'
                 ].join(' ')}
                 style={{
-                  backgroundColor: parseColor(logoBackgroundColor)
+                  backgroundColor: parseColor(logoBackgroundColor),
+                  fontSize: fontSize + 'px',
+                  flexDirection: direction
                 }}
                 ref={this.logoRef}
               >
@@ -194,7 +207,7 @@ class LogoGenerate extends Component<Props, State> {
                   contentEditable={true}
                   spellCheck={false}
                 >
-                  <span>{lastText}</span>
+                  {lastText}
                 </div>
               </div>
             </div>
@@ -219,13 +232,28 @@ class LogoGenerate extends Component<Props, State> {
             })}
             <div className={classes.logoGenerateInputContainer}>
               <div className={classes.logoGenerateLabel}>
+                <Typography variant="subtitle2">Font Size</Typography>
+              </div>
+              <div className={classes.logoGenerateInput}>
+                <Slider
+                  value={fontSize}
+                  min={30}
+                  max={180}
+                  step={1}
+                  aria-labelledby="label"
+                  onChange={this.handleChangeFontSize.bind(this)}
+                />
+              </div>
+            </div>
+            <div className={classes.logoGenerateInputContainer}>
+              <div className={classes.logoGenerateLabel}>
                 <Typography variant="subtitle2">Font Family</Typography>
               </div>
               <div className={classes.logoGenerateInput}>
                 <FontPicker
                   apiKey={api_key}
                   activeFontFamily={fontFamily}
-                  limit={100}
+                  limit={50}
                   sort={'popularity'}
                   variants={['700']}
                   onChange={nextFont =>

@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { SketchPicker } from 'react-color'
 import './ColorPicker.css'
+import GridBox from '../GridBox'
 
 type Props = {
   color: Object,
@@ -19,6 +20,19 @@ class ColorPicker extends Component<Props, State> {
     this.state = {
       open: false
     }
+  }
+
+  shouldComponentUpdate(preProps: Props, preState: State) {
+    if (
+      this.props.color.r === preProps.color.r &&
+      this.props.color.g === preProps.color.g &&
+      this.props.color.b === preProps.color.b &&
+      this.props.color.a === preProps.color.a &&
+      this.state.open === preState.open
+    ) {
+      return false
+    }
+    return true
   }
 
   handleChangeColor = (color: Object) => {
@@ -49,13 +63,24 @@ class ColorPicker extends Component<Props, State> {
         >
           <div
             style={{
-              minWidth: '20px',
-              minHeight: '20px',
-              backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b}, ${
-                color.a
-              })`
+              position: 'relative',
+              width: '20px',
+              height: '20px',
+              overflow: 'hidden'
             }}
-          />
+          >
+            <GridBox gridNum={5} gridWidth={5} />
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b}, ${
+                  color.a
+                })`
+              }}
+            />
+          </div>
         </div>
 
         {open && (
