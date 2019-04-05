@@ -11,6 +11,11 @@ import Button from '@material-ui/core/Button'
 import { createAndDownloadFile } from '../../utils'
 import Slider from '@material-ui/lab/Slider'
 
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+
 type Props = {
   classes: Object
 }
@@ -154,6 +159,10 @@ class LogoGenerate extends Component<Props, State> {
     })
   }
 
+  handleChangeDirection = event => {
+    this.setState({ direction: event.target.value })
+  }
+
   render() {
     const { classes } = this.props
     const {
@@ -262,6 +271,33 @@ class LogoGenerate extends Component<Props, State> {
                     })
                   }
                 />
+              </div>
+            </div>
+            <div className={classes.logoGenerateInputContainer}>
+              <div className={classes.logoGenerateLabel}>
+                <Typography variant="subtitle2">Direction</Typography>
+              </div>
+              <div className={classes.logoGenerateInput}>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="Direction"
+                    name="direction"
+                    value={direction}
+                    row
+                    onChange={this.handleChangeDirection.bind(this)}
+                  >
+                    <FormControlLabel
+                      value="row"
+                      control={<Radio color="primary" />}
+                      label="Row"
+                    />
+                    <FormControlLabel
+                      value="column"
+                      control={<Radio color="primary" />}
+                      label="Column"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </div>
             </div>
           </div>
