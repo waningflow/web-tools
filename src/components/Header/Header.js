@@ -31,7 +31,7 @@ const MenuConfig = [
   {
     name: 'LogoGenerate',
     title: 'Logo Generate',
-    desc: 'Generate logo like youtube',
+    desc: 'Generate logo like YouTube',
     path: '/logo-generate'
   }
 ]
