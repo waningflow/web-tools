@@ -28,7 +28,8 @@ type State = {
   highlightText: string,
   fontSize: number,
   fontFamily: string,
-  direction: string
+  direction: string,
+  highlightBorderRadius: number
   // firstText: string,
   // lastText: string
 }
@@ -47,13 +48,13 @@ const styles = theme => ({
     height: '50px'
   },
   logoGenerateLabel: {
-    flex: 1,
+    flex: 4,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   },
   logoGenerateInput: {
-    flex: 1,
+    flex: 6,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -119,8 +120,8 @@ const ColorNameList = [
   }
 ]
 
-const firstText = 'Edit'
-const lastText = 'Me'
+const firstText = 'Unde'
+const lastText = 'fined'
 
 class LogoGenerate extends Component<Props, State> {
   constructor(props: Props) {
@@ -134,7 +135,8 @@ class LogoGenerate extends Component<Props, State> {
       highlightText: 'last',
       fontSize: 60,
       fontFamily: 'Ubuntu', // or Fira Sans Condensed or Oswald
-      direction: 'row'
+      direction: 'row',
+      highlightBorderRadius: 10
     }
 
     this.logoRef = React.createRef()
@@ -147,20 +149,28 @@ class LogoGenerate extends Component<Props, State> {
   }
 
   handleClickExport() {
+    const text = this.logoRef.current.textContent
     domtoimage.toBlob(this.logoRef.current).then(function(blob) {
-      // window.saveAs(blob, 'my-node.png')
-      createAndDownloadFile('my_node.png', blob)
+      const filename = `${text}.png`
+      createAndDownloadFile(filename, blob)
     })
   }
 
-  handleChangeFontSize(event, value) {
+  handleChangeSlide = (name: string) => (event, value) => {
     this.setState({
-      fontSize: value
+      [name]: value
     })
   }
 
-  handleChangeDirection = event => {
-    this.setState({ direction: event.target.value })
+  handleChangeRadio = (name: string) => event => {
+    const { firstTextColor, lastTextColor } = this.state
+    this.setState({ [name]: event.target.value })
+    if (name === 'highlightText') {
+      this.setState({
+        firstTextColor: lastTextColor,
+        lastTextColor: firstTextColor
+      })
+    }
   }
 
   render() {
@@ -172,7 +182,9 @@ class LogoGenerate extends Component<Props, State> {
       firstTextColor,
       lastTextColor,
       fontSize,
-      direction
+      direction,
+      highlightBorderRadius,
+      highlightText
     } = this.state
     const parseColor = color =>
       `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`
@@ -195,10 +207,19 @@ class LogoGenerate extends Component<Props, State> {
                 ref={this.logoRef}
               >
                 <div
+                  // ref={this.firstTextRef}
                   className={classes.logoGenerateText}
                   style={{
                     padding: '0px 5px',
-                    color: parseColor(firstTextColor)
+                    color: parseColor(firstTextColor),
+                    borderRadius:
+                      highlightText === 'first'
+                        ? highlightBorderRadius + 'px'
+                        : '0px',
+                    backgroundColor:
+                      highlightText === 'first'
+                        ? parseColor(highlightBackgroundColor)
+                        : null
                   }}
                   contentEditable={true}
                   spellCheck={false}
@@ -206,12 +227,19 @@ class LogoGenerate extends Component<Props, State> {
                   {firstText}
                 </div>
                 <div
+                  // ref={this.lastTextRef}
                   className={classes.logoGenerateText}
                   style={{
                     padding: '0px 5px',
-                    borderRadius: '10px',
-                    backgroundColor: parseColor(highlightBackgroundColor),
-                    color: parseColor(lastTextColor)
+                    color: parseColor(lastTextColor),
+                    borderRadius:
+                      highlightText === 'last'
+                        ? highlightBorderRadius + 'px'
+                        : '0px',
+                    backgroundColor:
+                      highlightText === 'last'
+                        ? parseColor(highlightBackgroundColor)
+                        : null
                   }}
                   contentEditable={true}
                   spellCheck={false}
@@ -241,6 +269,75 @@ class LogoGenerate extends Component<Props, State> {
             })}
             <div className={classes.logoGenerateInputContainer}>
               <div className={classes.logoGenerateLabel}>
+                <Typography variant="subtitle2">Direction</Typography>
+              </div>
+              <div className={classes.logoGenerateInput}>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="Direction"
+                    name="direction"
+                    value={direction}
+                    row
+                    onChange={this.handleChangeRadio('direction')}
+                  >
+                    <FormControlLabel
+                      value="row"
+                      control={<Radio color="primary" />}
+                      label="Row"
+                    />
+                    <FormControlLabel
+                      value="column"
+                      control={<Radio color="primary" />}
+                      label="Column"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+            </div>
+            <div className={classes.logoGenerateInputContainer}>
+              <div className={classes.logoGenerateLabel}>
+                <Typography variant="subtitle2">Highlight Text</Typography>
+              </div>
+              <div className={classes.logoGenerateInput}>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    aria-label="Highlight Text"
+                    name="highlightText"
+                    value={highlightText}
+                    row
+                    onChange={this.handleChangeRadio('highlightText')}
+                  >
+                    <FormControlLabel
+                      value="first"
+                      control={<Radio color="primary" />}
+                      label="First"
+                    />
+                    <FormControlLabel
+                      value="last"
+                      control={<Radio color="primary" />}
+                      label="Last"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+            </div>
+            <div className={classes.logoGenerateInputContainer}>
+              <div className={classes.logoGenerateLabel}>
+                <Typography variant="subtitle2">Highlight Radius</Typography>
+              </div>
+              <div className={classes.logoGenerateInput}>
+                <Slider
+                  value={highlightBorderRadius}
+                  min={0}
+                  max={30}
+                  step={1}
+                  aria-labelledby="label"
+                  onChange={this.handleChangeSlide('highlightBorderRadius')}
+                />
+              </div>
+            </div>
+            <div className={classes.logoGenerateInputContainer}>
+              <div className={classes.logoGenerateLabel}>
                 <Typography variant="subtitle2">Font Size</Typography>
               </div>
               <div className={classes.logoGenerateInput}>
@@ -250,7 +347,7 @@ class LogoGenerate extends Component<Props, State> {
                   max={180}
                   step={1}
                   aria-labelledby="label"
-                  onChange={this.handleChangeFontSize.bind(this)}
+                  onChange={this.handleChangeSlide('fontSize')}
                 />
               </div>
             </div>
@@ -273,40 +370,13 @@ class LogoGenerate extends Component<Props, State> {
                 />
               </div>
             </div>
-            <div className={classes.logoGenerateInputContainer}>
-              <div className={classes.logoGenerateLabel}>
-                <Typography variant="subtitle2">Direction</Typography>
-              </div>
-              <div className={classes.logoGenerateInput}>
-                <FormControl component="fieldset">
-                  <RadioGroup
-                    aria-label="Direction"
-                    name="direction"
-                    value={direction}
-                    row
-                    onChange={this.handleChangeDirection.bind(this)}
-                  >
-                    <FormControlLabel
-                      value="row"
-                      control={<Radio color="primary" />}
-                      label="Row"
-                    />
-                    <FormControlLabel
-                      value="column"
-                      control={<Radio color="primary" />}
-                      label="Column"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </div>
-            </div>
           </div>
           <Button
             variant="contained"
             color="primary"
             onClick={this.handleClickExport.bind(this)}
             style={{
-              marginTop: '20px'
+              margin: '20px auto'
             }}
           >
             Export
