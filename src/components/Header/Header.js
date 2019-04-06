@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 })
 
-const githubUrl = 'https://github.com/waningflow'
+const githubUrl = 'https://github.com/waningflow/tools'
 
 class Header extends React.Component<Props, State> {
   state = {

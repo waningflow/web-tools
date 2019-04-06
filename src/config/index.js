@@ -12,8 +12,8 @@ export const MenuConfig = [
     path: '/npm-download'
   },
   {
-    name: 'LogoGenerate',
-    title: 'Logo Generate',
+    name: 'LogoGenerator',
+    title: 'Logo Generator',
     desc: 'Generate logo like YouTube',
     path: '/logo-generate'
   }
