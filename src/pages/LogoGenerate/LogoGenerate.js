@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 import ColorPicker from './items/ColorPicker'
@@ -123,7 +123,9 @@ const ColorNameList = [
 const firstText = 'Unde'
 const lastText = 'fined'
 
-class LogoGenerate extends Component<Props, State> {
+class LogoGenerate extends React.Component<Props, State> {
+  logoRef: { current: React.ElementRef<any> | null }
+
   constructor(props: Props) {
     super(props)
 
@@ -149,11 +151,13 @@ class LogoGenerate extends Component<Props, State> {
   }
 
   handleClickExport() {
-    const text = this.logoRef.current.textContent
-    domtoimage.toBlob(this.logoRef.current).then(function(blob) {
-      const filename = `${text}.png`
-      createAndDownloadFile(filename, blob)
-    })
+    if (this.logoRef.current) {
+      const text = this.logoRef.current.textContent
+      domtoimage.toBlob(this.logoRef.current).then(function(blob) {
+        const filename = `${text}.png`
+        createAndDownloadFile(filename, blob)
+      })
+    }
   }
 
   handleChangeSlide = (name: string) => (event, value) => {
