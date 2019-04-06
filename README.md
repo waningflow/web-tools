@@ -14,13 +14,14 @@ For now, there are only two tools in the site. But I'm going to add more. If you
 Search for the downloads statistic of NPM packages.
 
 Input the date and the package names to get the downloads statistic.
+All the data come from the api of NPM downloads.
 <p align="left"><img width="600" src="./public/npmdownload_sc_rm.png"></p>
 
 ### Logo Generator
 [Link](https://tools.waningflow.com/logo-generate)
 
 Generate logo like YouTube.
-<p align="left"><img width="100" src="./public/Something_rm.png" ></p>
+<p align="left"><img width="200" src="./public/Something_rm.png" ></p>
 And you can also adjust many parameters to get the best appearance you want.
 <p align="left"><img width="300" src="./public/logogenerate_sc_rm.png"></p>
 Finaly export the logo as PNG.
