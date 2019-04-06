@@ -1,5 +1,6 @@
-## Tools
 <p align="center"><a href="https://tools.waningflow.com/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://tools.waningflow.com/WebIcon.png" alt="waningflow logo"></a></p>
+
+## Tools
 
 [Click here](https://tools.waningflow.com/) to view the website.
 
@@ -13,7 +14,7 @@ For now, there are only two tools in the site. But I'm going to add more. If you
 Search for the downloads statistic of NPM packages.
 
 Input the date and the package names to get the downloads statistic.
-<p align="left"><img width="500" src="./public/npmdownload_sc_rm.png"></p>
+<p align="left"><img width="600" src="./public/npmdownload_sc_rm.png"></p>
 
 ### Logo Generator
 [Link](https://tools.waningflow.com/logo-generate)
@@ -21,5 +22,5 @@ Input the date and the package names to get the downloads statistic.
 Generate logo like YouTube.
 <p align="left"><img width="100" src="./public/Something_rm.png" ></p>
 And you can also adjust many parameters to get the best appearance you want.
-<p align="left"><img width="200" src="./public/logogenerate_sc_rm.png"></p>
+<p align="left"><img width="300" src="./public/logogenerate_sc_rm.png"></p>
 Finaly export the logo as PNG.
