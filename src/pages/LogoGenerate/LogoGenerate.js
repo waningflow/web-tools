@@ -120,8 +120,8 @@ const ColorNameList = [
   }
 ]
 
-const firstText = 'Unde'
-const lastText = 'fined'
+const firstText = 'Some'
+const lastText = 'Thing'
 
 class LogoGenerate extends React.Component<Props, State> {
   logoRef: { current: React.ElementRef<any> | null }
