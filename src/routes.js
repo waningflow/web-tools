@@ -6,12 +6,13 @@ import NpmDownload from './pages/NpmDownload'
 import LogoGenerate from './pages/LogoGenerate'
 import './routes.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function AppRouter(params) {
   return (
     <Router>
       <Header />
-      <div className="routeContainer">
+      <div className="routeContainer" style={{minHeight: window.innerHeight-100}}>
         <Grid container spacing={24} justify={'center'}>
           <Grid item xs={12} md={10} xl={8}>
             <Route path="/" exact component={Home} />
@@ -20,6 +21,7 @@ function AppRouter(params) {
           </Grid>
         </Grid>
       </div>
+      <Footer />
     </Router>
   )
 }
