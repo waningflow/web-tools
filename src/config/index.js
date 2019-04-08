@@ -9,12 +9,14 @@ export const MenuConfig = [
     name: 'NpmDownload',
     title: 'NPM Downloads',
     desc: 'Downloads statistic of NPM packages',
-    path: '/npm-download'
+    path: '/npm-download',
+    tag: 'online'
   },
   {
     name: 'LogoGenerator',
     title: 'Logo Generator',
     desc: 'Generate logo like YouTube',
-    path: '/logo-generate'
+    path: '/logo-generate',
+    tag: 'online'
   }
 ]

@@ -12,7 +12,7 @@ function AppRouter(params) {
   return (
     <Router>
       <Header />
-      <div className="routeContainer" style={{minHeight: window.innerHeight-100}}>
+      <div className="routeContainer" style={{minHeight: window.innerHeight-150}}>
         <Grid container spacing={24} justify={'center'}>
           <Grid item xs={12} md={10} xl={8}>
             <Route path="/" exact component={Home} />

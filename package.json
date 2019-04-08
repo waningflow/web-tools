@@ -60,6 +60,7 @@
     "react-contenteditable": "^3.2.6",
     "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.5",
+    "react-github-btn": "^1.0.5",
     "react-router-dom": "^5.0.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
