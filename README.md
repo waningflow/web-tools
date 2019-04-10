@@ -28,5 +28,5 @@ All the data come from the api of NPM downloads.
 Generate logo like YouTube.
 <p align="left"><img width="200" src="./public/Something_rm.png" ></p>
 And you can also adjust many parameters to get the best appearance you want.
-<p align="left"><img width="400" src="./public/logogenerate_sc_rm.png"></p>
+<p align="left"><img width="300" src="./public/logogenerate_sc_rm.png"></p>
 Finally export the logo as PNG.
