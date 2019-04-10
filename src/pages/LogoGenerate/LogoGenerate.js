@@ -15,6 +15,8 @@ import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
+import Paper from '@material-ui/core/Paper'
+import SaveAltIcon from '@material-ui/icons/SaveAlt'
 
 type Props = {
   classes: Object
@@ -40,18 +42,22 @@ const styles = theme => ({
   logoGenerateHandBar: {
     padding: '20px 15px',
     borderRadius: '5px',
-    border: '2px dashed',
-    borderColor: theme.palette.secondary.main
+    height: '600px',
+    display: 'flex',
+    flexDirection: 'column'
+    // border: '2px dashed',
+    // borderColor: theme.palette.secondary.main
   },
   logoGenerateInputContainer: {
     display: 'flex',
-    height: '50px'
+    height: '50px',
+    flex: 1
   },
   logoGenerateLabel: {
     flex: 4,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'left'
   },
   logoGenerateInput: {
     flex: 6,
@@ -97,6 +103,14 @@ const styles = theme => ({
     display: 'flex'
     // border: '1px solid',
     // borderColor: theme.palette.primary.main,
+  },
+  sliderInput: {
+    flex: 6
+  },
+  sliderLabel: {
+    flex: 4,
+    fontSize: '13px',
+    color: '#aaa'
   }
 })
 
@@ -195,7 +209,7 @@ class LogoGenerate extends React.Component<Props, State> {
     return (
       <Grid container spacing={24} style={{ marginTop: '20px' }}>
         <Grid item xs={12} md={8} xl={8}>
-          <div className={classes.logoGeneratePreviewContainer}>
+          <Paper className={classes.logoGeneratePreviewContainer}>
             <GridBox gridNum={51} />
             <div className={classes.logoGenerateLogoFullContainer}>
               <div
@@ -252,10 +266,10 @@ class LogoGenerate extends React.Component<Props, State> {
                 </div>
               </div>
             </div>
-          </div>
+          </Paper>
         </Grid>
         <Grid item xs={12} md={4} xl={4}>
-          <div className={classes.logoGenerateHandBar}>
+          <Paper className={classes.logoGenerateHandBar}>
             {ColorNameList.map(({ name, label }) => {
               return (
                 <div className={classes.logoGenerateInputContainer} key={name}>
@@ -337,7 +351,11 @@ class LogoGenerate extends React.Component<Props, State> {
                   step={1}
                   aria-labelledby="label"
                   onChange={this.handleChangeSlide('highlightBorderRadius')}
+                  className={classes.sliderInput}
                 />
+                <span className={classes.sliderLabel}>
+                  {highlightBorderRadius}px
+                </span>
               </div>
             </div>
             <div className={classes.logoGenerateInputContainer}>
@@ -352,7 +370,9 @@ class LogoGenerate extends React.Component<Props, State> {
                   step={1}
                   aria-labelledby="label"
                   onChange={this.handleChangeSlide('fontSize')}
+                  className={classes.sliderInput}
                 />
+                <span className={classes.sliderLabel}>{fontSize}px</span>
               </div>
             </div>
             <div className={classes.logoGenerateInputContainer}>
@@ -374,17 +394,20 @@ class LogoGenerate extends React.Component<Props, State> {
                 />
               </div>
             </div>
-          </div>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleClickExport.bind(this)}
-            style={{
-              margin: '20px auto'
-            }}
-          >
-            Export
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleClickExport.bind(this)}
+              style={{
+                marginTop: '15px',
+                flex: 1,
+                fontWeight: 'bold',
+              }}
+            >
+              <SaveAltIcon />
+              <span style={{marginLeft: '10px'}}>Export</span>
+            </Button>
+          </Paper>
         </Grid>
       </Grid>
     )
