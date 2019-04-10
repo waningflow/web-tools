@@ -8,6 +8,11 @@ Usually there are several tools I like to use. Someday I want to combine them in
 
 For now, there are only two tools in the site. But don't worry, more tools are coming. If you have any interesting ideas or requirements, feel free to raise an issue and I'll consider to add the functionality.
 
+__Tools Menu__
+
+ - [_NPM Downloads_](#NPM-Downloads)
+ - [_Logo Generator_](#Logo-Generator)
+
 ### NPM Downloads 
 [Link](https://tools.waningflow.com/npm-download)
 
