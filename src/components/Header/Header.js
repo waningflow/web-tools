@@ -12,7 +12,7 @@ import './Header.css'
 import { withRouter } from 'react-router'
 import IconButton from '@material-ui/core/IconButton'
 import SvgIcon from '@material-ui/core/SvgIcon'
-import { MenuConfig } from '../../config'
+import { MenuConfig, GithubUrl } from '../../config'
 
 type Props = {
   classes: Object,
@@ -35,8 +35,6 @@ const styles = theme => ({
     }
   }
 })
-
-const githubUrl = 'https://github.com/waningflow/tools'
 
 class Header extends React.Component<Props, State> {
   state = {
@@ -123,7 +121,7 @@ class Header extends React.Component<Props, State> {
             {this.toolsButton()}
             <div className="headerLogoImage" />
             <div className={classes.grow} />
-            <a href={githubUrl}>
+            <a href={GithubUrl}>
               {/* <div className="githubLogoImage" /> */}
               <IconButton aria-label="Github">
                 <SvgIcon style={{ color: '#000' }}>

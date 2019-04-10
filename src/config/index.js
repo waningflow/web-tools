@@ -20,3 +20,5 @@ export const MenuConfig = [
     tag: 'online'
   }
 ]
+
+export const GithubUrl = 'https://github.com/waningflow/web-tools'

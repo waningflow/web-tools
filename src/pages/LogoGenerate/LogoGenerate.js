@@ -401,11 +401,11 @@ class LogoGenerate extends React.Component<Props, State> {
               style={{
                 marginTop: '15px',
                 flex: 1,
-                fontWeight: 'bold',
+                fontWeight: 'bold'
               }}
             >
               <SaveAltIcon />
-              <span style={{marginLeft: '10px'}}>Export</span>
+              <span style={{ marginLeft: '10px' }}>Export</span>
             </Button>
           </Paper>
         </Grid>

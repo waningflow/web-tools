@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GitHubButton from 'react-github-btn'
+import { GithubUrl } from '../../config'
 
 export default class Footer extends Component {
   render() {
@@ -7,7 +8,7 @@ export default class Footer extends Component {
       <div style={{ margin: '20px' }}>
         <div>
           <GitHubButton
-            href="https://github.com/waningflow/tools"
+            href={GithubUrl}
             aria-label="Star waningflow/tools on GitHub"
           >
             Star
