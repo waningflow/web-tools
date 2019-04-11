@@ -22,3 +22,5 @@ export const MenuConfig = [
 ]
 
 export const GithubUrl = 'https://github.com/waningflow/web-tools'
+
+export const GAPropertyId = 'UA-136598251-4'
