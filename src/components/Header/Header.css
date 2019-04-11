@@ -5,9 +5,9 @@
   margin-bottom: 10px;
 }
 .headerLogoImage{
-  background-color: #247BA0;
-  background-image: url('../../assets/waningflow_a0.png');
-  width: 138px;
+  /* background-color: #247BA0; */
+  background-image: url('../../assets/WebIcon.png');
+  width: 40px;
   height: 40px;
   background-size: 100% 100%;
   border-radius: 5px;
