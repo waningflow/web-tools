@@ -228,7 +228,7 @@ class LogoGenerate extends React.Component<Props, State> {
                   // ref={this.firstTextRef}
                   className={classes.logoGenerateText}
                   style={{
-                    padding: '0px 5px',
+                    padding: '5px 5px',
                     color: parseColor(firstTextColor),
                     borderRadius:
                       highlightText === 'first'
@@ -248,7 +248,7 @@ class LogoGenerate extends React.Component<Props, State> {
                   // ref={this.lastTextRef}
                   className={classes.logoGenerateText}
                   style={{
-                    padding: '0px 5px',
+                    padding: '5px 5px',
                     color: parseColor(lastTextColor),
                     borderRadius:
                       highlightText === 'last'
