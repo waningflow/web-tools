@@ -10,7 +10,8 @@ const defaultParams = {
   packageName: 'react,vue',
   startDate: moment
     .utc()
-    .add(-30, 'd')
+    .add(-1, 'd')
+    .add(-1, 'M')
     .format(dateFormat),
   endDate: moment
     .utc()
