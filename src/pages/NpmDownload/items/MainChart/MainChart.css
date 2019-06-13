@@ -1,11 +1,15 @@
-.chartContainer{
+.chartContainer,
+.tableContainer {
   margin-top: 20px;
 }
-.buttonGroupContainer{
+.tableContainer {
+  margin-bottom: 20px;
+}
+.buttonGroupContainer {
   display: flex;
   justify-content: left;
 }
-.buttonGroup{
+.buttonGroup {
   margin-top: 20px;
   text-align: left;
   display: inline-flex;

@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper'
 import ToggleButton from '@material-ui/lab/ToggleButton'
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
 import Immutable from 'seamless-immutable'
+import MUIDataTable from 'mui-datatables'
 
 type Props = {
   packageName: string,
@@ -26,6 +27,23 @@ type State = {
 }
 
 const breakdownList = ['day', 'week', 'month', 'year']
+
+const tableColumns = [
+  {
+    name: 'name',
+    label: 'Name',
+    options: {
+      sort: true
+    }
+  },
+  {
+    name: 'downloads',
+    label: 'Downloads',
+    options: {
+      sort: true
+    }
+  }
+]
 
 export default class MainChart extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -139,6 +157,18 @@ export default class MainChart extends React.Component<Props, State> {
     return chartOption
   }
 
+  parseTableData(data: Array<Object>) {
+    console.log(data)
+    let rtn: Array<Object> = data.map(v => ({
+      name: v.package,
+      downloads: v.downloads.reduce((pre, cur) => {
+        pre += cur.downloads
+        return pre
+      }, 0)
+    }))
+    return rtn
+  }
+
   handleChangeBreakdown = (e: SyntheticEvent<>, value: string) => {
     this.setState({
       breakdown: value
@@ -149,6 +179,7 @@ export default class MainChart extends React.Component<Props, State> {
     const { initData, breakdown } = this.state
     const allData = formatDownloadData(initData, breakdown)
     const chartOption = this.parseChartOption(allData)
+    const tableData = this.parseTableData(allData)
     return (
       <div>
         <div className="buttonGroupContainer">
@@ -168,6 +199,19 @@ export default class MainChart extends React.Component<Props, State> {
         <Paper className="chartContainer">
           <HighchartsReact highcharts={Highcharts} options={chartOption} />
         </Paper>
+        <MUIDataTable
+          className="tableContainer"
+          title={''}
+          data={tableData}
+          columns={tableColumns}
+          options={{
+            pagination: false,
+            selectableRows: 'none',
+            filter: false,
+            print: false,
+            viewColumns: false
+          }}
+        />
       </div>
     )
   }
