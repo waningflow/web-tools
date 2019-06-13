@@ -33,7 +33,12 @@ const tableColumns = [
     name: 'name',
     label: 'Name',
     options: {
-      sort: true
+      sort: true,
+      customBodyRender: (value, tableMeta, updateValue) => (
+        <a href={'https://www.npmjs.com/package/' + value} target="blank">
+          {value}
+        </a>
+      )
     }
   },
   {
