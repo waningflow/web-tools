@@ -7,15 +7,14 @@ export default class Footer extends Component {
     return (
       <div style={{ margin: '20px' }}>
         <div>
-          <GitHubButton
-            href={GithubUrl}
-            aria-label="Star waningflow/tools on GitHub"
-          >
+          <GitHubButton href={GithubUrl} aria-label="Star waningflow/tools on GitHub">
             Star
           </GitHubButton>
         </div>
         <div style={{ color: '#aaa', fontSize: '14px', margin: '20px' }}>
-          <span>©️2019 waningflow.com All rights reserved.</span>
+          <span role="img" aria-label="website policy">
+            ©️2019 waningflow.com All rights reserved.
+          </span>
         </div>
       </div>
     )
