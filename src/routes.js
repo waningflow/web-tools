@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import './routes.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Loading from './components/Loading'
 import ReactGA from 'react-ga'
 import { createBrowserHistory as createHistory } from 'history'
 import Loadable from 'react-loadable'
@@ -13,24 +14,6 @@ history.listen((location, action) => {
   ReactGA.set({ page: location.pathname })
   ReactGA.pageview(location.pathname)
 })
-
-const Loading = () => (
-  <div
-    style={{
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontFamily: 'monospace'
-    }}
-  >
-    Loading...
-  </div>
-)
 
 const Home = Loadable({
   loader: () => import('./pages/Home'),
@@ -60,6 +43,7 @@ function AppRouter(params) {
             <Route path="/npm-download" exact component={NpmDownload} />
             <Route path="/logo-generate" exact component={LogoGenerate} />
             <Route path="/keycode-info" exact component={KeycodeInfo} />
+            <Route path="/loading" exact component={Loading} />
           </Grid>
         </Grid>
       </div>
