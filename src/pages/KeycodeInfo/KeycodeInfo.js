@@ -7,7 +7,7 @@ export default class KeycodeInfo extends Component {
   }
   componentDidMount() {
     document.addEventListener('keydown', e => {
-      console.log(e)
+      e.preventDefault()
       this.setState({
         keyCode: e.keyCode
       })
