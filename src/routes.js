@@ -44,6 +44,10 @@ const LogoGenerate = Loadable({
   loader: () => import('./pages/LogoGenerate'),
   loading: Loading
 })
+const KeycodeInfo = Loadable({
+  loader: () => import('./pages/KeycodeInfo'),
+  loading: Loading
+})
 
 function AppRouter(params) {
   return (
@@ -55,6 +59,7 @@ function AppRouter(params) {
             <Route path="/" exact component={Home} />
             <Route path="/npm-download" exact component={NpmDownload} />
             <Route path="/logo-generate" exact component={LogoGenerate} />
+            <Route path="/keycode-info" exact component={KeycodeInfo} />
           </Grid>
         </Grid>
       </div>

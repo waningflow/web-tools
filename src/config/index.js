@@ -18,6 +18,13 @@ export const MenuConfig = [
     desc: 'Generate logo like YouTube',
     path: '/logo-generate',
     tag: 'online'
+  },
+  {
+    name: 'KeycodeInfo',
+    title: 'Keycode Info',
+    desc: 'Javascript event keycode info',
+    path: '/keycode-info',
+    tag: 'online'
   }
 ]
 
