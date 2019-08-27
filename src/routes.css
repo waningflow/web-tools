@@ -2,4 +2,5 @@
   position: relative;
   width: 90vw;
   margin: 0 auto;
+  min-height: calc(100% - 121px);
 }

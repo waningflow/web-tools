@@ -36,8 +36,8 @@ function AppRouter(params) {
   return (
     <Router history={history}>
       <Header />
-      <div className="routeContainer" style={{ minHeight: window.innerHeight - 100 }}>
-        <Grid container spacing={24} justify={'center'}>
+      <div className="routeContainer">
+        <Grid container spacing={0} justify={'center'}>
           <Grid item xs={12} md={10} xl={8}>
             <Route path="/" exact component={Home} />
             <Route path="/npm-download" exact component={NpmDownload} />
