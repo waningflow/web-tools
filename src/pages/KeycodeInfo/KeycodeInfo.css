@@ -19,13 +19,33 @@
   box-shadow: 0px 1px 6px 2px #cccccc;
 }
 .keycodeInfoKeycode {
-  font-size: 120px;
+  font-size: 150px;
   font-weight: 800px;
   font-family: monospace;
 }
 .keycodeInfoDetail {
+  display: flex;
+  flex-direction: row;
+}
+.keycodeInfoDetailItem {
+  font-size: 30px;
   margin-top: 20px;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 10px 25px;
+  border-radius: 0 0 5px 5px;
   background-color: #b2dbbf;
+  margin: 12px;
+  position: relative;
+}
+.keycodeInfoDetailItemLabel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: black;
+  color: azure;
+  border-radius: 5px 5px 0 0;
+  user-select: none;
 }

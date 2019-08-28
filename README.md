@@ -41,3 +41,5 @@ Finally export the logo as PNG.
 [Link](https://tools.waningflow.com/keycode-info)
 
 Get Javascript event keycode info.
+
+<p align="left"><img width="300" src="./public/keycodeinfo_main.png" ></p>

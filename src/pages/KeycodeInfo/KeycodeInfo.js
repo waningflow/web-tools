@@ -12,19 +12,29 @@ export default class KeycodeInfo extends Component {
       e.preventDefault()
       this.setState({
         key: e.key,
-        keyCode: e.keyCode
+        keyCode: e.keyCode,
+        code: e.code
       })
     })
   }
 
   render() {
-    const { key, keyCode } = this.state
+    const { key, keyCode, code } = this.state
     return (
       <div className="keycodeInfoContainer">
         {keyCode ? (
           <>
             <div className="keycodeInfoKeycode">{keyCode}</div>
-            <div className="keycodeInfoDetail">{key}</div>
+            <div className="keycodeInfoDetail">
+              <div className="keycodeInfoDetailItem">
+                <div className="keycodeInfoDetailItemLabel">key</div>
+                {key}
+              </div>
+              <div className="keycodeInfoDetailItem">
+                <div className="keycodeInfoDetailItemLabel">code</div>
+                {code}
+              </div>
+            </div>
           </>
         ) : (
           <div className="keycodeInfoPlaceholder">Press any key to get keycode</div>
