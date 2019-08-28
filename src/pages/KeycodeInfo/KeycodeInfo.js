@@ -6,16 +6,21 @@ export default class KeycodeInfo extends Component {
     key: '',
     keyCode: ''
   }
-  componentDidMount() {
-    document.addEventListener('keydown', e => {
-      console.log(e)
-      e.preventDefault()
-      this.setState({
-        key: e.key,
-        keyCode: e.keyCode,
-        code: e.code
-      })
+
+  handleKeydown = e => {
+    e.preventDefault()
+    this.setState({
+      key: e.key,
+      keyCode: e.keyCode,
+      code: e.code
     })
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeydown)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeydown)
   }
 
   render() {
