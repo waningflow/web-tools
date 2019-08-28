@@ -1,4 +1,4 @@
-<p align="center"><a href="https://tools.waningflow.com/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://tools.waningflow.com/WebIcon.png" alt="waningflow logo"></a></p>
+<p align="center"><a href="https://tools.waningflow.com/" target="_blank" rel="noopener noreferrer"><img width="100" src="./public/WebIcon.png" alt="waningflow logo"></a></p>
 
 ## Tools
 
