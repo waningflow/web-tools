@@ -31,6 +31,10 @@ const KeycodeInfo = Loadable({
   loader: () => import('./pages/KeycodeInfo'),
   loading: Loading
 })
+const JsonParser = Loadable({
+  loader: () => import('./pages/JsonParser'),
+  loading: Loading
+})
 
 function AppRouter(params) {
   return (
@@ -43,6 +47,7 @@ function AppRouter(params) {
             <Route path="/npm-download" exact component={NpmDownload} />
             <Route path="/logo-generate" exact component={LogoGenerate} />
             <Route path="/keycode-info" exact component={KeycodeInfo} />
+            <Route path="/json-parser" exact component={JsonParser} />
             <Route path="/loading" exact component={Loading} />
           </Grid>
         </Grid>

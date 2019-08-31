@@ -25,6 +25,13 @@ export const MenuConfig = [
     desc: 'Javascript event keycode info',
     path: '/keycode-info',
     tag: 'online'
+  },
+  {
+    name: 'JsonParser',
+    title: 'JSON Parser',
+    desc: 'Parse string to JSON format',
+    path: '/json-parser',
+    tag: 'online'
   }
 ]
 
