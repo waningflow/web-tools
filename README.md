@@ -13,6 +13,7 @@ For now, there are only three tools in the site. But don't worry, more tools are
 - [_NPM Downloads_](#NPM-Downloads)
 - [_Logo Generator_](#Logo-Generator)
 - [_Keycode Info_](#Keycode-Info)
+- [_JSON Parser_](#JSON-Parser)
 
 ### NPM Downloads
 
@@ -43,3 +44,11 @@ Finally export the logo as PNG.
 Get Javascript event keycode info.
 
 <p align="left"><img width="300" src="./public/keycodeinfo_main.png" ></p>
+
+### JSON parser
+
+[Link](https://tools.waningflow.com/json-parser)
+
+Parse string to JSON format.
+
+<p align="left"><img width="800" src="./public/jsonparser_main.png" ></p>
