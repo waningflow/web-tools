@@ -6,7 +6,7 @@
 
 Usually there are several tools I like to use. Someday I want to combine them in one site thus I make "Tools".
 
-For now, there are only three tools in the site. But don't worry, more tools are coming. If you have any interesting ideas or requirements, feel free to raise an issue and I'll consider to add the functionality.
+For now, there are only four tools in the site. But don't worry, more tools are coming. If you have any interesting ideas or requirements, feel free to raise an issue and I'll consider to add the functionality.
 
 **Tools Menu**
 
