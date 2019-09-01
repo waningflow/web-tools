@@ -44,7 +44,7 @@ export default class JsonParser extends Component {
             src={inputJson}
             theme="monokai"
             displayDataTypes={false}
-            style={{ padding: '6px', borderRadius: '3px', height: window.innerHeight - 300 }}
+            style={{ padding: '6px', borderRadius: '3px', height: window.innerHeight - 300, overflow: 'scroll' }}
           />
         </div>
       </div>
