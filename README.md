@@ -2,7 +2,7 @@
 
 ## Tools
 
-[Click here](https://tools.waningflow.com/) to view the website.
+[Click here](https://tools.waningflow.com/) to visit.
 
 Usually there are several tools I like to use. Someday I want to combine them in one site thus I make "Tools".
 
