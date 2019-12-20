@@ -37,10 +37,28 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      window.fcWidget.init({
-        token: "8471b499-5ca7-4588-a11d-a8f388111c7d",
-        host: "https://wchat.freshchat.com"
-      });
+      function initFreshChat() {
+        window.fcWidget.init({
+          token: "e4c58cb4-023e-4965-b47a-c630f2e8de07",
+          host: "https://wchat.freshchat.com"
+        });
+
+        // To set unique user id in your system when it is available
+        window.fcWidget.setExternalId("john.doe1987");
+
+        // To set user name
+        window.fcWidget.user.setFirstName("John");
+
+        // To set user email
+        window.fcWidget.user.setEmail("john.doe@gmail.com");
+
+        // To set user properties
+        window.fcWidget.user.setProperties({
+          plan: "Estate",                 // meta property 1
+          status: "Active"                // meta property 2
+        });
+      }
+      function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
     </script>
   </body>
 </html>
