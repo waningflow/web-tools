@@ -13,7 +13,7 @@ export default class Footer extends Component {
         </div> */}
         <div style={{ color: '#aaa', fontSize: '14px', margin: '20px' }}>
           <span role="img" aria-label="website policy">
-            ©️2019 waningflow.com All rights reserved.
+            ©️2020 waningflow.com All rights reserved.
           </span>
         </div>
       </>
