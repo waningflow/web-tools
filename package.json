@@ -2,6 +2,7 @@
   "name": "tools",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://waningflow.com/tools",
   "dependencies": {
     "@babel/core": "7.2.2",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
@@ -83,7 +84,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "flow": "flow"
+    "flow": "flow",
+    "upload": "yarn build && node scripts/publish.js"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -145,5 +147,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "ali-oss": "^6.10.0",
+    "glob": "^7.1.6"
   }
 }

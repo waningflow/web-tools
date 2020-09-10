@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Loading from './components/Loading'
 import ReactGA from 'react-ga'
-import { createBrowserHistory as createHistory } from 'history'
+import { createHashHistory as createHistory } from 'history'
 import Loadable from 'react-loadable'
 
 const history = createHistory()
