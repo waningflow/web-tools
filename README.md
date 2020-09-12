@@ -1,8 +1,8 @@
-<p align="center"><a href="https://tools.waningflow.com/" target="_blank" rel="noopener noreferrer"><img width="100" src="./public/WebIcon.png" alt="waningflow logo"></a></p>
+<p align="center"><a href="https://waningflow.com/tools" target="_blank" rel="noopener noreferrer"><img width="100" src="./public/WebIcon.png" alt="waningflow logo"></a></p>
 
 ## Tools
 
-[Click here](https://tools.waningflow.com/) to visit.
+[Click here](https://waningflow.com/tools) to visit.
 
 Usually there are several tools I like to use. Someday I want to combine them in one site thus I make "Tools".
 
@@ -17,7 +17,7 @@ For now, there are only four tools in the site. But don't worry, more tools are 
 
 ### NPM Downloads
 
-[Link](https://tools.waningflow.com/npm-download)
+[Link](https://waningflow.com/tools/#/npm-download)
 
 Search for the downloads statistic of NPM packages.
 
@@ -28,7 +28,7 @@ All the data come from the api of NPM downloads.
 
 ### Logo Generator
 
-[Link](https://tools.waningflow.com/logo-generate)
+[Link](https://waningflow.com/tools/#/logo-generate)
 
 Generate logo like YouTube.
 
@@ -39,7 +39,7 @@ Finally export the logo as PNG.
 
 ### Keycode Info
 
-[Link](https://tools.waningflow.com/keycode-info)
+[Link](https://waningflow.com/tools/#/keycode-info)
 
 Get Javascript event keycode info.
 
@@ -47,7 +47,7 @@ Get Javascript event keycode info.
 
 ### JSON parser
 
-[Link](https://tools.waningflow.com/json-parser)
+[Link](https://waningflow.com/tools/#/json-parser)
 
 Parse string to JSON format.
 
